@@ -113,6 +113,9 @@ void jsr(uint16_t i);
 // Task 9
 // No implementation needed
 
+// Task 10
+void start(uint16_t offset);
+
 void rti(uint16_t i);
 void res(uint16_t i);
 void tgetc();

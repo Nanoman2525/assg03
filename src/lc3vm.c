@@ -565,8 +565,24 @@ void trap(uint16_t i)
  * looking up and invoking the (microcode) instruction function from this
  * lookup table.
  */
-// you need to declare the operator execution lookup table here.  This will be an
-// array of function pointers to your opcode microcode execution functions.
+op_ex_f op_ex[NUMOPS] = {
+  br,    // 0x0
+  add,   // 0x1
+  ld,    // 0x2
+  st,    // 0x3
+  jsr,   // 0x4
+  andlc, // 0x5
+  ldr,   // 0x6
+  str,   // 0x7
+  rti,   // 0x8
+  notlc, // 0x9
+  ldi,   // 0xA
+  sti,   // 0xB
+  jmp,   // 0xC
+  res,   // 0xD
+  lea,   // 0xE
+  trap   // 0xF
+};
 
 /** @brief start/run LC-3 simulator
  *
@@ -583,7 +599,15 @@ void trap(uint16_t i)
  *   a 16-bit (signed) offset from this location and start there instead
  *   in this routine.
  */
-// put your implememtation of start() here below its documentation
+void start(uint16_t offset)
+{
+  reg[RPC] = PC_START + offset;
+  while (running)
+  {
+    uint16_t i = mem_read(reg[RPC]++);
+    op_ex[OPC(i)](i);
+  }
+}
 
 /** @brief load an LC-3 machine instruction image
  *
