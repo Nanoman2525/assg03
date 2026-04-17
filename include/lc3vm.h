@@ -1,9 +1,9 @@
 /** @file lc3vm.h
  * @brief LC-3 VM API
  *
- * @author Student Name
- * @note   cwid: 123456
- * @date   Spring 2024
+ * @author Kadin Ahmad
+ * @note   cwid: 50341941
+ * @date   Spring 2026
  * @note   ide:  g++ 8.2.0 / GNU Make 4.2.1
  *
  * Header include file for LC-3 simulator API/functions.
@@ -66,6 +66,10 @@ extern uint16_t reg[];
 extern uint16_t PC_START;
 
 // your task functions should go here
+
+// Task 1
+uint16_t mem_read(uint16_t addr);
+void mem_write(uint16_t addr, uint16_t val);
 
 void rti(uint16_t i);
 void res(uint16_t i);
