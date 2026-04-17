@@ -236,7 +236,11 @@ void notlc(uint16_t i)
  *   destination and source register operands, and to extract the
  *   second source register or the immediate value encoded in the
  */
-// put your implememtation of ld() here below it documentation
+void ld(uint16_t i)
+{
+  reg[DR(i)] = mem_read(reg[RPC] + PCOFF9(i));
+  update_flags(DR(i));
+}
 
 /** @brief load indirect
  *
@@ -253,7 +257,11 @@ void notlc(uint16_t i)
  *   destination and source register operands, and to extract the
  *   second source register or the immediate value encoded in the
  */
-// put your implememtation of ldi() here below it documentation
+void ldi(uint16_t i)
+{
+  reg[DR(i)] = mem_read(mem_read(reg[RPC] + PCOFF9(i)));
+  update_flags(DR(i));
+}
 
 /** @brief load base + relative offset
  *
@@ -269,7 +277,11 @@ void notlc(uint16_t i)
  *   destination and source register operands, and to extract the
  *   second source register or the immediate value encoded in the
  */
-// put your implememtation of ldr() here below it documentation
+void ldr(uint16_t i)
+{
+  reg[DR(i)] = mem_read(reg[SR1(i)] + OFF6(i));
+  update_flags(DR(i));
+}
 
 /** @brief load effective address
  *
@@ -286,7 +298,8 @@ void notlc(uint16_t i)
  *   destination and source register operands, and to extract the
  *   second source register or the immediate value encoded in the
  */
-// put your implememtation of lea() here below it documentation
+void lea(uint16_t i)
+{ reg[DR(i)] = reg[RPC] + PCOFF9(i); }
 
 /** @brief store to PC + offset
  *

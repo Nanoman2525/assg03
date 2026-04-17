@@ -94,6 +94,12 @@ void add(uint16_t i);
 void andlc(uint16_t i);
 void notlc(uint16_t i);
 
+// Task 6
+void ld(uint16_t i);
+void ldi(uint16_t i);
+void ldr(uint16_t i);
+void lea(uint16_t i);
+
 void rti(uint16_t i);
 void res(uint16_t i);
 void tgetc();
