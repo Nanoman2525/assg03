@@ -86,6 +86,9 @@ uint16_t sign_extend(uint16_t bits, int size);
 
 // Task 3 located towards top of file
 
+// Task 4
+void update_flags(enum registr r);
+
 void rti(uint16_t i);
 void res(uint16_t i);
 void tgetc();

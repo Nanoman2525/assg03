@@ -116,7 +116,21 @@ uint16_t sign_extend(uint16_t bits, int size)
  *   was just modified by an operation and needs to have the condition code flags
  *   updated as a side effect of the operation just performed.
  */
-// put your implememtation of update_flags() here below it documentation
+void update_flags(enum registr r)
+{
+  if (reg[r] == 0)
+  {
+    reg[RCND] = FZ;
+  }
+  else if (reg[r] >> 15) // check sign bit
+  {
+    reg[RCND] = FN;
+  }
+  else
+  {
+    reg[RCND] = FP;
+  }
+}
 
 /** @brief add operation
  *
