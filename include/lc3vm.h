@@ -24,6 +24,16 @@
 #define FL(i) (((i) >> 11) & 1)
 #define TRP(i) ((i) & 0xFF)
 
+// Task 3
+#define OPC(i) ((i) >> 12)
+#define SR2(i) ((i) & 0x0007)
+#define SR1(i) (((i) >> 6) & 0x0007)
+#define DR(i) (((i) >> 9) & 0x0007)
+#define SEXTIMM(i) sign_extend((i), 5)
+#define OFF6(i) sign_extend((i), 6)
+#define PCOFF9(i) sign_extend((i), 9)
+#define PCOFF11(i) sign_extend((i), 11)
+
 typedef void (*op_ex_f)(uint16_t i);
 typedef void (*trp_ex_f)();
 
@@ -73,6 +83,8 @@ void mem_write(uint16_t addr, uint16_t val);
 
 // Task 2
 uint16_t sign_extend(uint16_t bits, int size);
+
+// Task 3 located towards top of file
 
 void rti(uint16_t i);
 void res(uint16_t i);
